@@ -1,0 +1,1 @@
+TravelWorld is a modern, responsive hotel booking platform built using React (Vite) for the frontend. It enables users to explore hotels, view details, and make bookings with ease. Admins can also add new hotels through a dedicated form. This project is ideal for learning full-stack development and booking system logic.
