@@ -1,3 +1,7 @@
+// Root route for status check
+app.get('/', (req, res) => {
+  res.json({ status: 'Backend is active' });
+});
 const express = require('express');
 const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
@@ -219,7 +223,7 @@ app.use(express.json({ limit: '10mb' })); // Adjust the size limit as needed
 app.get('/api/bookings', async (req, res) => {
   try {
     const bookings = await Booking.find();
-console.log(bookings);
+    console.log(bookings);
     const hotelList = await Promise.all(bookings.map(async (booking) => {
       const hotel = await Hotel.findById(booking.hotelId);
       if (!hotel) {
@@ -239,7 +243,7 @@ console.log(bookings);
           price: hotel.price
         },
         bookingDate: bookingDate.toISOString(), // Ensure booking date is correctly formatted
-        mobile: booking. mobileNumber || 'N/A'  // Include mobile number, default to 'N/A' if missing
+        mobile: booking.mobileNumber || 'N/A'  // Include mobile number, default to 'N/A' if missing
       };
     }));
 
@@ -355,7 +359,5 @@ app.put('/change-password', async (req, res) => {
 
 
 
-// Start the server
-app.listen(5000, () => {
-  console.log('Server running on port 5000');
-});
+// For Vercel serverless deployment, export the app instead of starting a server
+module.exports = app;
