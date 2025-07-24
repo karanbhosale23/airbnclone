@@ -2,6 +2,7 @@
 app.get('/', (req, res) => {
   res.json({ status: 'Backend is active' });
 });
+
 const express = require('express');
 const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
