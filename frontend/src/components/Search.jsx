@@ -25,7 +25,7 @@ const Search = () => {
     setError(null);
 
     try {
-      const response = await axios.get('http://localhost:5000/search', {
+      const response = await axios.get(`${process.env.REACT_APP_SERVER_URL}/search`, {
         params: { location, name },
       });
 
@@ -39,34 +39,34 @@ const Search = () => {
   };
 
   return (
-<>
-    <div>
-      <h2>Search Hotels</h2>
-      <form onSubmit={handleSearch}>
-        <div>
-          <label>Location:</label>
-          <input
-            type="text"
-            value={location}
-            onChange={(e) => setLocation(e.target.value)}
-          />
-        </div>
-        <div>
-          <label>Name:</label>
-          <input
-            type="text"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-          />
-        </div>
-        <button type="submit" disabled={loading}>
-          {loading ? "Searching..." : "Search"}
-        </button>
-      </form>
+    <>
+      <div>
+        <h2>Search Hotels</h2>
+        <form onSubmit={handleSearch}>
+          <div>
+            <label>Location:</label>
+            <input
+              type="text"
+              value={location}
+              onChange={(e) => setLocation(e.target.value)}
+            />
+          </div>
+          <div>
+            <label>Name:</label>
+            <input
+              type="text"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+            />
+          </div>
+          <button type="submit" disabled={loading}>
+            {loading ? "Searching..." : "Search"}
+          </button>
+        </form>
 
-      {error && <p style={{ color: "red" }}>{error}</p>}
+        {error && <p style={{ color: "red" }}>{error}</p>}
 
-      {/* <div>
+        {/* <div>
       
         {results.length > 0 ? (
           <ul>
@@ -90,10 +90,10 @@ const Search = () => {
           
         )}
       </div> */}
-       <CardGrid hotels={results || []} /> 
-    </div>
+        <CardGrid hotels={results || []} />
+      </div>
 
-</>
+    </>
   );
 };
 

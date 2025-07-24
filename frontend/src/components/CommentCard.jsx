@@ -7,7 +7,7 @@ import "./CommentCard.css"
 
 const CommentCard = ({ hotelId }) => {
 
- 
+
 
 
 
@@ -22,7 +22,7 @@ const CommentCard = ({ hotelId }) => {
   useEffect(() => {
     const fetchComments = async () => {
       try {
-        const response = await axios.get(`http://localhost:5000/hotel/${hotelId}/comments`);
+        const response = await axios.get(`${process.env.REACT_APP_SERVER_URL}/hotel/${hotelId}/comments`);
         setComments(response.data);
       } catch (error) {
         console.error('Error fetching comments', error);
@@ -52,7 +52,7 @@ const CommentCard = ({ hotelId }) => {
 
         // Send the comment to the backend
         await axios.post(
-          `http://localhost:5000/hotel/${hotelId}/comments`,
+          `${process.env.REACT_APP_SERVER_URL}/hotel/${hotelId}/comments`,
           newComment,
           { headers: { Authorization: `Bearer ${token}` } } // Add Authorization header
         );
@@ -81,16 +81,16 @@ const CommentCard = ({ hotelId }) => {
           placeholder="Add a comment..."
           rows="2"
         />
-      {/* Rating Input */}
-      <div className="mt-2">
-        <ReactStars
-          count={5}
-          value={rating}
-          onChange={handleRatingChange}
-          size={24}
-          activeColor="#ffd700"
-        />
-      </div>
+        {/* Rating Input */}
+        <div className="mt-2">
+          <ReactStars
+            count={5}
+            value={rating}
+            onChange={handleRatingChange}
+            size={24}
+            activeColor="#ffd700"
+          />
+        </div>
         <button
           className="btn btn-primary ms-2"
           onClick={handleCommentSubmit}

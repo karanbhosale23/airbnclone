@@ -8,7 +8,7 @@ const BookingList = () => {
   useEffect(() => {
     // Fetch the bookings data from the backend API
     axios
-      .get('http://localhost:5000/api/bookings') // Replace with your backend URL
+      .get(`${process.env.REACT_APP_SERVER_URL}/api/bookings`) // Replace with your backend URL
       .then((response) => {
         setBookings(response.data);
       })

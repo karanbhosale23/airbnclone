@@ -13,7 +13,7 @@ const CommentCard = () => {
   useEffect(() => {
     const fetchComments = async () => {
       try {
-        const response = await fetch('http://localhost:5000/api/comments'); // Replace with your backend endpoint
+        const response = await fetch(`${process.env.REACT_APP_SERVER_URL}/api/comments`); // Replace with your backend endpoint
         if (!response.ok) throw new Error('Failed to fetch comments');
         const data = await response.json();
         setComments(data);
@@ -42,7 +42,7 @@ const CommentCard = () => {
       setCommenting(true);
       setError(''); // Clear previous errors
       try {
-        const response = await fetch('http://localhost:5000/api/comments', {
+        const response = await fetch(`${process.env.REACT_APP_SERVER_URL}/api/comments`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ user: 'John Doe', text: comment, rating }), // Replace 'John Doe' with dynamic username if available

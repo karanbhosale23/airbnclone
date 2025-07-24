@@ -38,7 +38,7 @@ const Booking = ({ hotelId }) => {
 
     try {
       const response = await axios.post(
-        `http://localhost:5000/book-hotel/${hotelId}`,
+        `${process.env.REACT_APP_SERVER_URL}/book-hotel/${hotelId}`,
         bookingData,
         {
           headers: {

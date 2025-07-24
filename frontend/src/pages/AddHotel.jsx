@@ -6,7 +6,7 @@ const AddHotel = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await axios.post('http://localhost:5000/add-hotel', formData);
+    await axios.post(`${process.env.REACT_APP_SERVER_URL}/add-hotel`, formData);
     alert('Hotel added successfully');
   };
 

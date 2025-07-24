@@ -23,7 +23,7 @@ const Profile = () => {
       }
 
       try {
-        const response = await axios.get("http://localhost:5000/profile", {
+        const response = await axios.get(`${process.env.REACT_APP_SERVER_URL}/profile`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -57,7 +57,7 @@ const Profile = () => {
 
     try {
       const response = await axios.put(
-        "http://localhost:5000/change-password",
+        `${process.env.REACT_APP_SERVER_URL}/change-password`,
         {
           currentPassword,
           newPassword,
