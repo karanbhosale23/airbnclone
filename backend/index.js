@@ -15,7 +15,7 @@ app.get('/', (req, res) => {
 });
 
 // Middlewares
-app.use(cors());  // Enable CORS
+app.use(cors({ origin: "https://hotelmangemnet.netlify.app" }));  // Enable CORS for Netlify frontend only
 app.use(express.json({ limit: '100mb' }));  // Increase request body size limit
 app.use(express.urlencoded({ limit: '100mb', extended: true }));  // Handle URL-encoded data
 
