@@ -1,8 +1,3 @@
-// Root route for status check
-app.get('/', (req, res) => {
-  res.json({ status: 'Backend is active' });
-});
-
 const express = require('express');
 const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
@@ -12,7 +7,12 @@ const port = process.env.PORT || 5000;
 require('dotenv').config();
 
 
+
 const app = express();
+// Root route for status check
+app.get('/', (req, res) => {
+  res.json({ status: 'Backend is active' });
+});
 
 // Middlewares
 app.use(cors());  // Enable CORS
